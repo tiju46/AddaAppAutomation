@@ -5,9 +5,9 @@
     <classes>
       <class name="tests.addaautomation">
         <methods>
+          <include name="CreateHelpdesk"/>
           <include name="teardown"/>
           <include name="setup"/>
-          <include name="openapp"/>
         </methods>
       </class> <!-- tests.addaautomation -->
     </classes>
