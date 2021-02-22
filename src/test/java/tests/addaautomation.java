@@ -6,6 +6,8 @@ import java.net.URL;
 //import java.security.Timestamp;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.openqa.selenium.By;
@@ -16,8 +18,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 
 public class addaautomation {
 	public static AndroidDriver driver;
@@ -194,15 +199,14 @@ public class addaautomation {
 		driver.findElement(By.id("com.threefiveeight.adda:id/iv_back")).click();
 		Thread.sleep(2000);
 		
-	} */
+	} 
 	 @Test (priority=5)
 		
 		public static void CreatePoll() throws InterruptedException, IOException
 		{
 		 String	scrollUpward="com.threefiveeight.adda:id/tv_label_shortcuts";
 			driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId(\""+scrollUpward+"\"))");
-		
-		driver.findElement(By.id("com.threefiveeight.adda:id/iv_more")).click();
+		 driver.findElement(By.id("com.threefiveeight.adda:id/iv_more")).click();
 		String createPoll="Create Poll";
 		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\""+createPoll+"\")").click(); //Click on create poll 
 		Thread.sleep(2000);
@@ -216,10 +220,84 @@ public class addaautomation {
 		Thread.sleep(3000);
 		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+pollTopic+"\").instance(0))");
 	
+		}*/
+	//Book facility
+    @Test (priority=6)
+    public static void bookFacility() throws InterruptedException
+    { 
+    
+    	//driver.findElement(By.xpath("//android.widget.FrameLayout[@content-desc='More']/android.widget.ImageView")).click();
+ 		String morescreen="More";
+ 		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\""+morescreen+"\").instance(0)").click();
+ 		String Facilityscreen="Facilities";
+ 		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\""+Facilityscreen+"\").instance(0)").click();
+    	String bookedFacility="Hour";
+ 		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\""+bookedFacility+"\").instance(0)").click();
+ 		
+ 		Thread.sleep(2000);
+ 		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Select Date\").instance(0)").click();
+ 		LocalDate localDate =java.time.LocalDate.now();   //Getting current date
+		int Day = localDate.getDayOfMonth()+1;              //Extract day out of date
+		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\""+Day+"\")").click(); //Selecting from calendar day
+		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"OK\")").click();
 		
+		driver.findElement(By.id("com.threefiveeight.adda:id/from_time_tv")).click();
+		driver.findElement(By.id("android:id/toggle_mode")).click();
+		driver.findElement(By.id("android:id/input_hour")).click();
+		driver.findElement(By.id("android:id/input_hour")).clear();
+		driver.findElement(By.id("android:id/input_hour")).sendKeys("01");
+		driver.findElement(By.id("android:id/input_minute")).click();
+		driver.findElement(By.id("android:id/input_minute")).clear();
+		driver.findElement(By.id("android:id/input_minute")).sendKeys("30");
+		driver.findElement(By.id("android:id/am_pm_spinner")).click();
+		Thread.sleep(2000);
+		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"AM\")").click();
+		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"OK\")").click();
+					
+		driver.findElement(By.id("com.threefiveeight.adda:id/to_time_tv")).click();
+		driver.findElement(By.id("android:id/toggle_mode")).click();
+		driver.findElement(By.id("android:id/input_hour")).click();
+		driver.findElement(By.id("android:id/input_hour")).clear();
+		driver.findElement(By.id("android:id/input_hour")).sendKeys("02");
+		driver.findElement(By.id("android:id/input_minute")).click();
+		driver.findElement(By.id("android:id/input_minute")).clear();
+		driver.findElement(By.id("android:id/input_minute")).sendKeys("30");
+		driver.findElement(By.id("android:id/am_pm_spinner")).click();
+		Thread.sleep(2000);
+		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"AM\")").click();
+		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"OK\")").click();
+		
+		driver.findElement(By.id("com.threefiveeight.adda:id/et_notes")).sendKeys("Test");
+		
+		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"BOOK\")").click();
+		
+		Thread.sleep(2000);
+		//driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"OK\")").click();
+		driver.findElement(By.id("android:id/button1")).click();
+		
+		Thread.sleep(3000);
+		driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")").click(); //Click on back icon
+    
+		Thread.sleep(2000);
+		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Booking History\")").click();
+		
+		driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.viewpager.widget.ViewPager/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.Button")).click();
+		driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView[2]")).click();
+		driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']")).click();
+    }
+	 @Test (priority=7)
+		
+		public static void addvisitor() throws InterruptedException, IOException
+		{
+    
+		 driver.findElement(By.xpath("//android.widget.FrameLayout[@content-desc='Home']/android.widget.ImageView")).click();
+		 driver.findElement(By.id("com.threefiveeight.adda:id/iv_more")).click();
+		 driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]/android.widget.ImageView")).click();
+		 driver.findElement(By.id("com.threefiveeight.adda:id/cl_cab")).click();
+		 driver.findElement(By.id("com.threefiveeight.adda:id/tv_exp_vis_submit")).click();
+		 driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']")).click();
 		}
-     
-	@AfterTest
+		 @AfterTest
 	public void teardown() {
 
 	}
