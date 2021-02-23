@@ -61,6 +61,7 @@ public class addaautomation {
 	@Test (priority=1)
 	public void openapp() throws InterruptedException {
 		//System.out.println("Test Passed");
+		Thread.sleep(2000);
 		driver.findElement(By.id("com.threefiveeight.adda:id/tv_switch_email_mobile")).click(); //swith to login with emailid
 		Thread.sleep(2000);
 		driver.findElement(By.id("com.threefiveeight.adda:id/et_email_id")).sendKeys("test90923@gmail.com");  //enter email id
@@ -117,6 +118,8 @@ public class addaautomation {
 		//Try catch to handle app tour
 
 		try{	
+			driver.findElement(By.id("com.threefiveeight.adda:id/app_bar")).click();
+			Thread.sleep(2000);
 			driver.findElement(By.id("com.threefiveeight.adda:id/app_bar")).click();
 			Thread.sleep(2000);
 			driver.findElement(By.id("com.threefiveeight.adda:id/app_bar")).click();
@@ -220,7 +223,7 @@ public class addaautomation {
 		Thread.sleep(3000);
 		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+pollTopic+"\").instance(0))");
 	
-		}*/
+		}
 	//Book facility
     @Test (priority=6)
     public static void bookFacility() throws InterruptedException
@@ -289,14 +292,112 @@ public class addaautomation {
 		
 		public static void addvisitor() throws InterruptedException, IOException
 		{
-    
-		 driver.findElement(By.xpath("//android.widget.FrameLayout[@content-desc='Home']/android.widget.ImageView")).click();
-		 driver.findElement(By.id("com.threefiveeight.adda:id/iv_more")).click();
+		 String	scrollUpward="com.threefiveeight.adda:id/tv_label_gate_updates";
+			driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId(\""+scrollUpward+"\"))");
+		// driver.findElement(By.xpath("//android.widget.FrameLayout[@content-desc='Home']/android.widget.ImageView")).click();
+		 //driver.findElement(By.id("com.threefiveeight.adda:id/iv_more")).click();
 		 driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]/android.widget.ImageView")).click();
-		 driver.findElement(By.id("com.threefiveeight.adda:id/cl_cab")).click();
+		 Thread.sleep(2000);
+		 driver.findElement(By.id("com.threefiveeight.adda:id/imageView6")).click();
+		 Thread.sleep(2000);
 		 driver.findElement(By.id("com.threefiveeight.adda:id/tv_exp_vis_submit")).click();
+		 Thread.sleep(2000);
 		 driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']")).click();
-		}
+		 Thread.sleep(2000);
+		 driver.findElement(By.id("com.threefiveeight.adda:id/tv_view_all")).click();
+		 Thread.sleep(2000);
+		 driver.findElement(By.id("com.threefiveeight.adda:id/ll_delete")).click();
+		 Thread.sleep(2000);
+		 driver.findElement(By.id("com.threefiveeight.adda:id/dialog_positive_button")).click();
+		 Thread.sleep(3000);
+		 driver.findElement(By.xpath("//android.widget.LinearLayout[@content-desc='Helpers']/android.widget.TextView")).click();
+		 driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']")).click();
+		}*/
+	//Pay Due
+			@Test (priority=7)
+			public static void payDue() throws InterruptedException
+			{				
+				Thread.sleep(2000);
+				driver.findElement(By.id("com.threefiveeight.adda:id/navigation_my_unit")).click();
+				Thread.sleep(2000);
+				driver.findElementById("com.threefiveeight.adda:id/b_pay_dues").click();
+				Thread.sleep(4000);
+				driver.findElementById("com.threefiveeight.adda:id/ctvSelectBill").click();
+				Thread.sleep(2000);
+	            driver.findElementById("com.threefiveeight.adda:id/tvProceedPayment").click();	
+	            Thread.sleep(3000);
+	            //driver.findElementByXPath("//android.widget.TextView[@text='UPI']").click();
+	            driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Netbanking - SBI\")").click();
+	            Thread.sleep(3000);
+	            driver.findElementById("com.threefiveeight.adda:id/tvPayPayment").click();
+	            Thread.sleep(15000);
+	         
+	           // driver.findElementById("android.widget.Button").click();
+	            //Thread.sleep(4000);
+	            TouchAction action= new TouchAction(driver);
+	            action.tap(PointOption.point(0, 744)).perform();
+	            
+	            Thread.sleep(4000);
+	            
+	            action.tap(PointOption.point(716, 899)).perform();
+	            
+	            Thread.sleep(10000);
+	            
+	            
+	            try
+	            {
+	            	String bankLogin = driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"LOGIN\")").getText();
+	            	if(bankLogin.equalsIgnoreCase("Login"))
+	            	{
+	            		System.out.println("Login page is displayed");
+	            		test.log(LogStatus.PASS, "FLogin page is displayed");
+	            	}
+	            }
+	            
+	            catch(Exception e)
+	            {
+	            	System.out.println(e);
+	            	System.out.println("Unable to validate Login page");
+	            	test.log(LogStatus.FAIL, "Unable to validate Login page");
+	            }
+	            
+	            driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")").click(); //Click on back icon
+	            Thread.sleep(2000);
+	        	driver.findElement(By.id("com.threefiveeight.adda:id/navigation_home")).click(); //click on Home
+	            
+			}
+			
+			
+			//Validate GK link in my unit
+			@Test (priority=8)
+			public static void validateGkLink() throws InterruptedException
+			{   test = report.startTest("Validate GK link-MyUnit");
+				Thread.sleep(2000);
+				driver.findElement(By.id("com.threefiveeight.adda:id/navigation_my_unit")).click();
+				Thread.sleep(2000);
+				driver.findElement(By.id("com.threefiveeight.adda:id/tv_gk_shortcut")).click();
+				Thread.sleep(2000);
+				
+				try
+				{
+					String expectedTitle= driver.findElement(By.id("com.threefiveeight.adda:id/toolbar")).getText();
+					String actualTitle="Gate Updates";
+				    if(expectedTitle.equalsIgnoreCase(actualTitle))
+				   {
+					test.log(LogStatus.PASS, "GK link in my unit validated");
+				   }
+				}
+				 catch(Exception e)
+	            {
+	            	System.out.println(e);
+	            	System.out.println("Validation failed for GK link in my unit");
+	            	test.log(LogStatus.FAIL, "Validation failed for GK link in my unit");
+	            }
+				
+				driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")").click();
+				
+			}
+		
 		 @AfterTest
 	public void teardown() {
 
