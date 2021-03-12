@@ -8,6 +8,7 @@
           <include name="teardown"/>
           <include name="setup"/>
           <include name="bookFacility"/>
+          <include name="CreatePoll"/>
         </methods>
       </class> <!-- tests.addaautomation -->
     </classes>
