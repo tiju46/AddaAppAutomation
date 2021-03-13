@@ -5,6 +5,7 @@
 	<groupId>com.appium.demo</groupId>
 	<artifactId>AddaApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/io.appium/java-client -->
 		<dependency>
@@ -25,5 +26,6 @@
 			<version>7.3.0</version>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 </project>

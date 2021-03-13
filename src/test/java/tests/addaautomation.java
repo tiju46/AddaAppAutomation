@@ -143,7 +143,7 @@ public class addaautomation {
 	}
 
 	//create post
-	/*@Test (priority=2)
+	@Test (priority=2)
 	public static void PostCoversation() throws InterruptedException, IOException
 	{	
 		Thread.sleep(2000);
@@ -160,6 +160,7 @@ public class addaautomation {
 		String Topic = "Test Community Post-Automation" +timestamp;
 
 		String Description="Test automation sample message"+timestamp;
+		Thread.sleep(2000);
 		driver.findElement(By.id("com.threefiveeight.adda:id/etForumTopic")).sendKeys(Topic);
 		driver.findElement(By.id("com.threefiveeight.adda:id/etForumDescription")).sendKeys(Description);
 		driver.findElement(By.id("com.threefiveeight.adda:id/post")).click();
@@ -167,7 +168,7 @@ public class addaautomation {
 		driver.findElement(By.id("com.threefiveeight.adda:id/navigation_home")).click(); 
 
 
-	} */
+	} 
 
 	//Create helpdesk ticket
 	@Test (priority=3)
@@ -179,6 +180,7 @@ public class addaautomation {
 		Thread.sleep(1000);
 		String visibleText="Helpdesk";
 		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\""+visibleText+"\").instance(0)").click();
+		Thread.sleep(2000);
 		WebElement dropdownelement = driver.findElement(By.id("com.threefiveeight.adda:id/et_category"));
 		dropdownelement.click();
 		Thread.sleep(2000);
@@ -202,7 +204,7 @@ public class addaautomation {
 
 	} 
 	//Create Poll
-	@Test (priority=5)
+	/*@Test (priority=5)
 
 	public static void CreatePoll() throws InterruptedException, IOException
 	{
@@ -224,7 +226,7 @@ public class addaautomation {
 		driver.findElement(By.id("com.threefiveeight.adda:id/navigation_home")).click(); 
 
 
-	}
+	}*/
 	//Book facility
 	@Test (priority=6)
 	public static void bookFacility() throws InterruptedException
@@ -285,6 +287,8 @@ public class addaautomation {
 		Thread.sleep(2000);
 		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Booking History\")").click();
 		Thread.sleep(2000);
+		driver.findElement(By.id("com.threefiveeight.adda:id/btn_cancel")).click();
+		Thread.sleep(2000);
 		driver.findElement(By.id("com.threefiveeight.adda:id/dialog_positive_button")).click();
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']")).click();
@@ -294,9 +298,10 @@ public class addaautomation {
 
 	public static void addvisitor() throws InterruptedException, IOException
 	{
-		driver.findElement(By.id("com.threefiveeight.adda:id/navigation_home")).click();
-		driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]/android.widget.ImageView")).click();
-		Thread.sleep(2000);
+		driver.findElement(By.id("com.threefiveeight.adda:id/iv_add_shortcuts")).click();
+		Thread.sleep(1000);
+		String visibleText="Invite Visitor";
+		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\""+visibleText+"\").instance(0)").click();
 		driver.findElement(By.id("com.threefiveeight.adda:id/imageView6")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.id("com.threefiveeight.adda:id/tv_exp_vis_submit")).click();
@@ -311,7 +316,7 @@ public class addaautomation {
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//android.widget.LinearLayout[@content-desc='Helpers']/android.widget.TextView")).click();
 		driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']")).click();
-	}
+	}*/
 	//Pay Due
 	@Test (priority=8)
 	public static void payDue() throws InterruptedException
@@ -383,23 +388,35 @@ public class addaautomation {
 	//Direct message
 	@Test (priority=11)
 
-	public static void directMsg () throws InterruptedException, IOException
+	public static void Buysell () throws InterruptedException, IOException
 	{
 
 		Thread.sleep(2000);
-		driver.findElement(By.id("com.threefiveeight.adda:id/iv_more")).click();
-		String chat="Chat";
-		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\""+chat+"\")").click(); //Click on create poll 
+		driver.findElement(By.id("com.threefiveeight.adda:id/iv_add_shortcuts")).click();;
+		String BuySelll="Buy/Sell";
+		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\""+BuySelll+"\")").click(); 
 		Thread.sleep(2000);
-		driver.findElementByAndroidUIAutomator("new UiSelector().textContains(\"Neighbours\")").click();
-		driver.findElement(By.id("com.threefiveeight.adda:id/ivMessageIcon")).click();
+		driver.findElement(By.id("com.threefiveeight.adda:id/navigation_home")).click();
+		
+	}
+	@Test (priority=12)
+
+	public static void HomePage () throws InterruptedException, IOException
+	{
+
 		Thread.sleep(2000);
-		driver.findElement(By.id("com.threefiveeight.adda:id/etMessage")).sendKeys("Hi hello");
-		driver.findElement(By.id("com.threefiveeight.adda:id/ivSendMessage")).click();
-		driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")").click();
+		driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[2]/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup")).click();
 		Thread.sleep(2000);
-		driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")").click();
-	} */
+		driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']")).click();
+		Thread.sleep(2000);
+		String	scrolldownward="com.threefiveeight.adda:id/tv_display_text";
+		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId(\""+scrolldownward+"\"))");
+		Thread.sleep(2000);
+		driver.findElement(By.id("com.threefiveeight.adda:id/tv_display_text")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//android.widget.ImageButton[@content-desc='Navigate up']")).click();
+	}
+
 	@AfterTest
 	public void teardown() {
 
